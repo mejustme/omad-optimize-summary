@@ -1,35 +1,39 @@
 window.addEventListener('DOMContentLoaded',function () {
-    Highcharts.chart('container', {
+    Highcharts.chart('j-tag', {
         chart: {
             type: 'column'
         },
         title: {
-            text: 'Monthly Average Rainfall'
+            text: 'omad各环境，打包优化时间对比'
         },
         subtitle: {
-            text: 'Source: WorldClimate.com'
+            text: 'tag依赖',
+            style: { "fontSize": "14px" }
         },
         xAxis: {
             categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
+                '无任何优化',
+                'bower cache',
+                'ant sync module replace node sync',
+                'node 4.2.6 replace node 0.12.4 ',
+                'parallel 并行任务 ' +
+                '【clean,npm,bower][sync,scss][learn,mobile,org,web]'
             ],
-            crosshair: true
+            title: {
+                text: '优化项',
+                style: { "fontSize": "14px" }
+            },
+            crosshair: true,
+            labels:{
+                style: { "color": "#666", "cursor": "default", "fontSize": "14px" }
+            }
         },
+
         yAxis: {
             min: 0,
             title: {
-                text: 'Rainfall (mm)'
+                text: '时间 (秒)',
+                style: { "color": "#666", "cursor": "default", "fontSize": "14px" }
             }
         },
         tooltip: {
@@ -47,21 +51,113 @@ window.addEventListener('DOMContentLoaded',function () {
             }
         },
         series: [{
-            name: 'Tokyo',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+            name: '企业云',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            color: '#7cb5ec'
 
         }, {
-            name: 'New York',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+            name: '云课堂2.0',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            color: '#90ed7d'
 
         }, {
-            name: 'London',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+            name: '运营后台2.0',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            color: '#8085e9'
+
+        },{
+            name: 'K12',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            color: "#dc5b5b"
+        }, {
+            name: '云课堂1.0',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            color: "#434348"
+
+        }],
+        legend: {
+            itemStyle: {  "fontSize": "13px", "fontWeight": "bold" }
+        }
+    });
+
+    Highcharts.chart('j-branch', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'omad各环境，打包优化时间对比'
+        },
+        subtitle: {
+            text: '分支依赖',
+            style: { "fontSize": "14px" }
+        },
+        xAxis: {
+            categories: [
+                '无任何优化',
+                'bower cache',
+                'ant sync module replace node sync',
+                'node 4.2.6 replace node 0.12.4 ',
+                'parallel 并行任务 ' +
+                '【clean,npm,bower][sync,scss][learn,mobile,org,web]'
+            ],
+            title: {
+                text: '优化项',
+                style: { "fontSize": "14px" }
+            },
+            crosshair: true,
+            labels:{
+                style: { "color": "#666", "cursor": "default", "fontSize": "14px" }
+            }
+        },
+
+        yAxis: {
+            min: 0,
+            title: {
+                text: '时间 (秒)',
+                style: { "color": "#666", "cursor": "default", "fontSize": "14px" }
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: '企业云',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            color: '#7cb5ec'
 
         }, {
-            name: 'Berlin',
-            data: [42.4, 33.2, 34.5, 39.7, 52.6, 75.5, 57.4, 60.4, 47.6, 39.1, 46.8, 51.1]
+            name: '云课堂2.0',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            color: '#90ed7d'
 
-        }]
+        }, {
+            name: '运营后台2.0',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            color: '#8085e9'
+
+        },{
+            name: 'K12',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            color: "#dc5b5b"
+        }, {
+            name: '云课堂1.0',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            color: "#434348"
+
+        }],
+        legend: {
+            itemStyle: {  "fontSize": "13px", "fontWeight": "bold" }
+        }
     });
 });
