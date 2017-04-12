@@ -38,8 +38,17 @@ window.addEventListener('DOMContentLoaded',function () {
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y}秒</b></td></tr>',
+            pointFormatter: function () {
+                var time = this.y>60? Math.floor((this.y)/60)+'分钟'+ Math.floor((this.y)%60)+'秒': this.y+'秒';
+                var map = {
+                    time: time,
+                    color: this.series.color,
+                    name: this.series.name
+                };
+                return '<tr><td style="color:{color};padding:0">{name}: </td><td style="padding:0"><b>{time}</b></td></tr>'.replace(/{(.+?)}/g, function($0,$1){
+                    return map[$1];
+                })
+            },
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -57,17 +66,17 @@ window.addEventListener('DOMContentLoaded',function () {
 
         }, {
             name: '云课堂2.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
+            data:  new Array(6),
             color: '#90ed7d'
 
         }, {
             name: '运营后台2.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
+            data:  new Array(6),
             color: '#8085e9'
 
         }, {
             name: '云课堂1.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
+            data:  new Array(6),
             color: "#434348"
 
         },{
@@ -119,8 +128,17 @@ window.addEventListener('DOMContentLoaded',function () {
         },
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            pointFormatter: function () {
+                var time = this.y>60? Math.floor((this.y)/60)+'分钟'+ Math.floor((this.y)%60)+'秒': this.y+'秒';
+                var map = {
+                    time: time,
+                    color: this.series.color,
+                    name: this.series.name
+                };
+                return '<tr><td style="color:{color};padding:0">{name}: </td><td style="padding:0"><b>{time}</b></td></tr>'.replace(/{(.+?)}/g, function($0,$1){
+                    return map[$1];
+                })
+            },
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -133,22 +151,22 @@ window.addEventListener('DOMContentLoaded',function () {
         },
         series: [{
             name: '企业云',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
+            data: [704, 586, 661, 245, 273, 79],
             color: '#7cb5ec'
 
         }, {
             name: '云课堂2.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
+            data:  new Array(6),
             color: '#90ed7d'
 
         }, {
             name: '运营后台2.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
+            data: new Array(6),
             color: '#8085e9'
 
         }, {
             name: '云课堂1.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
+            data:  new Array(6),
             color: "#434348"
 
         },{
@@ -169,14 +187,4 @@ window.addEventListener('DOMContentLoaded',function () {
             items:['do-nothing','bower-cache','java-sync','high-node','parallel','do-all']
         }
     }).$inject('#j-images1');
-
-    new Regular({
-        template: '#j-template',
-        data:{
-            name: '云课堂2.0',
-            projectType: '2c',
-            type: 'branch',
-            items:['do-nothing','bower-cache','java-sync','high-node','parallel','do-all']
-        }
-    }).$inject('#j-images2')
 });
