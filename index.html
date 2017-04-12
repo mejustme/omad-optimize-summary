@@ -5,14 +5,61 @@
     <title>omad-optimize-summary</title>
 </head>
 <script src="./bower_components/highcharts/highcharts.js"></script>
+<script src="./bower_components/regularjs/dist/regular.js"></script>
 <script src="./index.js"></script>
-<style>
+<script type="tpl/template" id="j-template">
+    <div class="item-group">
+        <h1>{name}数据截图</h1>
+        <div class="tem-group-child">
+            <div class="type" style="margin: 10px">tag依赖</div>
+            <div class="items">
+                {#list items as item}
+                <div class="img-box">
+                    <img class="img-item" src="./images/tag/{projectType}/{item}.png"/>
+                </div>
+                {/list}
+            </div>
 
+        </div>
+        <div class="item-group-child">
+            <div class="type" style="margin: 10px">分支依赖</div>
+            <div class="items">
+                {#list items as item}
+                <div class="img-box">
+                    <img class="img-item" src="./images/branch/{projectType}/{item}.png"/>
+                </div>
+                {/list}
+            </div>
+        </div>
+
+    </div>
+</script>
+<style>
+    .item-group .img-item {
+        width: 650px;
+    }
+    .item-group .type {
+        font-size: 18px;
+        font-weight:bolder;
+    }
+    .item-group .img-box {
+        width: 650px;
+        height: 110px;
+        float: left;
+        margin: 10px;
+    }
+    .tem-group-child{
+        margin: 10px;
+    }
+    .items{
+        overflow: hidden;
+    }
 </style>
 <body>
 <div id="j-tag" style="min-width: 310px; height: 350px; margin: 0 auto"></div>
 <div id="j-branch" style="min-width: 310px; height: 350px; margin: 50px auto"></div>
-
+<div id="j-images1"></div>
+<div id="j-images2"></div>
 </body>
 
 </html>

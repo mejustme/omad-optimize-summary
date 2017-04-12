@@ -14,10 +14,10 @@ window.addEventListener('DOMContentLoaded',function () {
             categories: [
                 '无任何优化',
                 'bower cache',
-                'ant sync module replace node sync',
-                'node 4.2.6 replace node 0.12.4 ',
-                'parallel 并行任务 ' +
-                '【clean,npm,bower][sync,scss][learn,mobile,org,web]'
+                'ant sync to node sync',
+                'node 4.2.6 to node 0.12.4 ',
+                '并行任务【clean,npm,bower][learn,org,web,mobile][sync,scss]',
+                '优化所有'
             ],
             title: {
                 text: '优化项',
@@ -39,7 +39,7 @@ window.addEventListener('DOMContentLoaded',function () {
         tooltip: {
             headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
             pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f} mm</b></td></tr>',
+            '<td style="padding:0"><b>{point.y}秒</b></td></tr>',
             footerFormat: '</table>',
             shared: true,
             useHTML: true
@@ -52,28 +52,28 @@ window.addEventListener('DOMContentLoaded',function () {
         },
         series: [{
             name: '企业云',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            data: [691, 566, 612, 257, 225, 47],
             color: '#7cb5ec'
 
         }, {
             name: '云课堂2.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
             color: '#90ed7d'
 
         }, {
             name: '运营后台2.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
             color: '#8085e9'
+
+        }, {
+            name: '云课堂1.0',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
+            color: "#434348"
 
         },{
             name: 'K12',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            data: new Array(6),
             color: "#dc5b5b"
-        }, {
-            name: '云课堂1.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0],
-            color: "#434348"
-
         }],
         legend: {
             itemStyle: {  "fontSize": "13px", "fontWeight": "bold" }
@@ -95,10 +95,10 @@ window.addEventListener('DOMContentLoaded',function () {
             categories: [
                 '无任何优化',
                 'bower cache',
-                'ant sync module replace node sync',
-                'node 4.2.6 replace node 0.12.4 ',
-                'parallel 并行任务 ' +
-                '【clean,npm,bower][sync,scss][learn,mobile,org,web]'
+                'ant sync to node sync',
+                'node 4.2.6 to node 0.12.4 ',
+                '并行任务【clean,npm,bower][learn,org,web,mobile][sync,scss]',
+                '优化所有'
             ],
             title: {
                 text: '优化项',
@@ -133,31 +133,50 @@ window.addEventListener('DOMContentLoaded',function () {
         },
         series: [{
             name: '企业云',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
             color: '#7cb5ec'
 
         }, {
             name: '云课堂2.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
             color: '#90ed7d'
 
         }, {
             name: '运营后台2.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
             color: '#8085e9'
+
+        }, {
+            name: '云课堂1.0',
+            data: [49.9, 71.5, 106.4, 129.2, 144.0, 111],
+            color: "#434348"
 
         },{
             name: 'K12',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0],
+            data: new Array(6),
             color: "#dc5b5b"
-        }, {
-            name: '云课堂1.0',
-            data: [49.9, 71.5, 106.4, 129.2, 144.0],
-            color: "#434348"
-
         }],
         legend: {
             itemStyle: {  "fontSize": "13px", "fontWeight": "bold" }
         }
     });
+    new Regular({
+        template: '#j-template',
+        data:{
+            name: '企业云',
+            projectType: '2b',
+            type: 'tag',
+            items:['do-nothing','bower-cache','java-sync','high-node','parallel','do-all']
+        }
+    }).$inject('#j-images1');
+
+    new Regular({
+        template: '#j-template',
+        data:{
+            name: '云课堂2.0',
+            projectType: '2c',
+            type: 'branch',
+            items:['do-nothing','bower-cache','java-sync','high-node','parallel','do-all']
+        }
+    }).$inject('#j-images2')
 });
