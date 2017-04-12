@@ -1,0 +1,17 @@
+{
+  "name": "omad-optimize-summary",
+  "homepage": "https://github.com/mejustme/omad-optimize-summary",
+  "authors": [
+    "陈钦辉 <hzchenqinhui@corp.netease.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
