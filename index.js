@@ -65,23 +65,28 @@ window.addEventListener('DOMContentLoaded',function () {
             color: '#7cb5ec'
 
         }, {
-            name: '云课堂2.0',
-            data:  new Array(6),
+            name: '云课堂2.0-teach',
+            data: [371, 214, 287, 210, 324, 43],
+            color: '#90ed7d'
+
+        }, {
+            name: '云课堂2.0-main',
+            data: [436, 285, 381, 229, 305, 135],
             color: '#90ed7d'
 
         }, {
             name: '运营后台2.0',
-            data:  new Array(6),
+            data: [763, 653, 757, 174, 716, 142],
             color: '#8085e9'
 
         }, {
             name: '云课堂1.0',
-            data:  new Array(6),
+            data:  [272, 219, 199, 142, 229, 59],
             color: "#434348"
 
         },{
             name: 'K12',
-            data: new Array(6),
+            data: [371, 214, 287, 259, 324, 43],
             color: "#dc5b5b"
         }],
         legend: {
@@ -154,14 +159,19 @@ window.addEventListener('DOMContentLoaded',function () {
             data: [704, 586, 661, 245, 273, 79],
             color: '#7cb5ec'
 
+        },{
+            name: '云课堂2.0-teach',
+            data:  new Array(6),
+            color: '#90ed7d'
+
         }, {
-            name: '云课堂2.0',
+            name: '云课堂2.0-main',
             data:  new Array(6),
             color: '#90ed7d'
 
         }, {
             name: '运营后台2.0',
-            data: new Array(6),
+            data:  new Array(6),
             color: '#8085e9'
 
         }, {
@@ -187,4 +197,54 @@ window.addEventListener('DOMContentLoaded',function () {
             items:['do-nothing','bower-cache','java-sync','high-node','parallel','do-all']
         }
     }).$inject('#j-images1');
+
+    new Regular({
+        template: '#j-template',
+        data:{
+            name: '云课堂2.0-org',
+            projectType: 'org',
+            type: 'tag',
+            items:['do-nothing','bower-cache','java-sync','high-node','parallel','do-all']
+        }
+    }).$inject('#j-images2');
+
+    new Regular({
+        template: '#j-template',
+        data:{
+            name: '云课堂2.0-main',
+            projectType: 'main',
+            type: 'tag',
+            items:['do-nothing','bower-cache','java-sync','high-node','parallel','do-all']
+        }
+    }).$inject('#j-images3');
+
+    new Regular({
+        template: '#j-template',
+        data:{
+            name: '运营后台2.0',
+            projectType: 'admin',
+            type: 'tag',
+            items:['do-nothing','bower-cache','java-sync','high-node','parallel','do-all']
+        }
+    }).$inject('#j-images3');
+
+    new Regular({
+        template: '#j-template',
+        data:{
+            name: 'study',
+            projectType: 'study',
+            type: 'tag',
+            items:['do-nothing','bower-cache','java-sync','high-node','parallel','do-all']
+        }
+    }).$inject('#j-images4');
+
+    new Regular({
+        template: '#j-template',
+        data:{
+            name: 'k12(同云课堂2.0机构后台)',
+            projectType: 'k12',
+            type: 'tag',
+            items:['do-nothing','bower-cache','java-sync','high-node','parallel','do-all']
+        }
+    }).$inject('#j-images5');
 });
