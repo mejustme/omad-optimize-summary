@@ -63,37 +63,30 @@
 </style>
 <body>
 <div id="j-tag" style="min-width: 310px; height: 350px; margin: 0 auto"></div>
-<div id="j-branch" style="min-width: 310px; height: 350px; margin: 50px auto"></div>
-<h3>以上是本地ant构建工程优化前后时间对比，omad环境网络速度比本地好很多，除非很多人都在构建，网络速度会下降很多</h3>
-<h5>(只有企业云数据，未统计其他产品线)</h5>
+<h4>以上是本地ant构建工程优化前后时间对比，omad环境网络速度比本地好很多，除非很多人都在构建</h4>
 <br/>
-<h4>优化过程中解决的其他问题：</h4>
-<h3> 1、知道了我们经常遇到问题的原因：只有一台构建机器</h3>
-<p>无论开发+测试+预发+线上 都是在这台机器上构建，只是Ant在某个文件夹下的一个进程， 构建好了，在分别部署到不同的机器上如：test-web1、publish1 </p>
-<br/>
+<h3>本次前端构建优化，有两点 (未来迁移NDP同理可实现)</h3>
+<h2>1、优化前端构建速度</h2>
+<h2>2、多产品多环境build.xml变成一份来维护，修改该构建文件后无需在omad平台各处上传更新, git push即可</h2>
 
-<h3> 2、前端大家申请了构建机器查看权限 </h3>
-<p> <a href="https://g.hz.netease.com/edu-front-spec/edu-front-doc/blob/master/4.Manual/Omad.md" target="_blank">omad 构建失败，构建机器查看指南文档，请猛戳</a></p>
-<br/>
 
-<h3> 3、每次构建先会删除所有html中的module-xxx: </h3>
+<h3>其他</h3>
+<h4> 1、通过修改build.properties, is_bower_cache_clean参数决定是否要bower缓存</h4>
+
+<h4> 2、每次构建先会删除所有html中的module-xxx: </h4>
 <p>这个是困扰我们时常打包失败的原因，当切换分支，会有其他迭代的module-xxx残留在html中，但bower其依赖等已经移除，导致打包失败</p>
-<br/>
 
-<h3> 4、每次构建前删除所有res/module-xxx、res/compoent-xxx、res/res-base </h3>
+<h4> 3、每次构建前删除所有res/module-xxx、res/compoent-xxx、res/res-base </h4>
 <p>这个是困扰我们更新字体，更新图片后，构建部署后仍然是老的资源。原因是自己或者其他分支构建后，会将这些文件夹残留在构建机器中，然而nej打包过程中如果该资源文件存在，则不再从lib中复制过来覆盖</p>
-<br/>
 
-<h3> 5、解决：omad的log到最后关键一步显示几个input后不再输出的问题 + 窗口大小优化</h3>
+<h4> 4、知道了我们经常遇到问题的原因：只有一台构建机器</h4>
+<p>无论开发+测试+预发+线上 都是在这台机器上构建，只是Ant在某个文件夹下的一个进程， 构建好了，在分别部署到不同的机器上如：test-web1、publish1 </p>
+
+<h4> 5、前端大家申请了构建机器查看权限 </h4>
+<p> <a href="https://g.hz.netease.com/edu-front-spec/edu-front-doc/blob/master/4.Manual/Omad.md" target="_blank">omad 构建失败，构建机器查看指南文档，请猛戳</a></p>
+
+<h4> 6、解决：omad的log到最后关键一步显示几个input后不再输出的问题 + 窗口大小优化</h4>
 <img src="./images/omad-showlog.png" alt="" style="width: 780px">
-<br/>
-
-<h3>最后</h3>
-<p>考虑到omad一般网络速度很不错（现在是我电脑1.4M/s,omad:24M/s，吃惊）以及时常大家上预发上线，会删掉一个tag再打相同tag, 此时缓存会有问题，但是大家又没有权限上构建机器删除缓存，（必须删除omad构建用户中的bower缓存）,<span class="red">故构建脚本中仍然保留bower cache clean</span></p>
-<br/>
-
-<h3>总结</h3>
-<h2>我们的目标是：不再深陷omad打包构建失败，让其稳定、快速，我们专注代码本身</h2>
 
 <div id="j-images1"></div>
 <div id="j-images2"></div>
